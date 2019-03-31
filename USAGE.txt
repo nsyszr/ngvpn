@@ -1,0 +1,16 @@
+ngvpn [command] [flags]
+ngvpn serve management -f ./mgmt.sock --bind-publisher "tcp://*:6001" --bind-command "tcp://*:6003"
+
+
+ngvpnctl monitor realtime --server "tcp://localhost:6001"
+ngvpnctl monitor logs -s "tcp://localhost:6002"
+
+ngvpnctl exec command -s "tcp://localhost:6003" status 2
+
+
+
+For MKR
+
+* Added OPENVPN_PLUGIN_CLIENT_CONNECT_V2 plugin callback, which
+  allows a client-connect plugin to return configuration text
+  in memory, rather than via a file.
